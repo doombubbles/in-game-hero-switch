@@ -1,4 +1,4 @@
-<a href="https://github.com/doombubbles/in-game-hero-switch/releases/latest/download/SacrificeHelper.dll"><img align="right" alt="Download" height="75" src="https://github.com/doombubbles/BTD6-Mods/blob/main/download.png?raw=true"></a>
+<a href="https://github.com/doombubbles/in-game-hero-switch/releases/latest/download/InGameHeroSwitch.dll"><img align="right" alt="Download" height="75" src="https://github.com/doombubbles/BTD6-Mods/blob/main/download.png?raw=true"></a>
 
 # In-Game Hero Switch
 

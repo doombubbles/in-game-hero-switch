@@ -20,7 +20,8 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
 {
     private static readonly ModSettingBool CycleIfPlaced = new(false)
     {
-        description = "Whether to still allow cycling to different heroes if one is already placed down."
+        description = "Whether to still allow cycling to different heroes if one is already placed down.",
+        button = true
     };
 
     private static readonly ModSettingHotkey CycleUp = new(KeyCode.PageUp);
