@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <RootNamespace>InGameHeroSwitch</RootNamespace>
         <Configurations>Debug;Release</Configurations>
         <Nullable>enable</Nullable>
         <AssemblyName>InGameHeroSwitch</AssemblyName>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
-
+    
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <Optimize>False</Optimize>
         <DebugType>embedded</DebugType>
@@ -18,9 +18,5 @@
         <DebugType>none</DebugType>
     </PropertyGroup>
 
-    <Import Project="..\btd6.targets"/>
-    <ItemGroup>
-        <Reference Include="$(BloonsTD6)\Mods\BloonsTD6 Mod Helper.dll"/>
-    </ItemGroup>
-
+    <Import Project="..\btd6.targets" />
 </Project>
