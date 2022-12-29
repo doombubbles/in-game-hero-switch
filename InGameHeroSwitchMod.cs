@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Assets.Scripts.Models.TowerSets;
-using Assets.Scripts.Unity;
-using Assets.Scripts.Unity.UI_New.InGame;
-using Assets.Scripts.Unity.UI_New.InGame.RightMenu;
-using Assets.Scripts.Unity.UI_New.InGame.StoreMenu;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Extensions;
@@ -28,7 +28,7 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
 
     private static readonly ModSettingHotkey CycleDown = new(KeyCode.PageDown);
 
-    private static string realSelectedHero;
+    private static string? realSelectedHero;
 
     private static void ChangeHero(int delta)
     {
@@ -75,6 +75,8 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
 
     public override void OnUpdate()
     {
+        if (InGame.instance != null) return;
+        
         if (CycleUp.JustPressed())
         {
             ChangeHero(-1);
