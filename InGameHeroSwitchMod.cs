@@ -75,7 +75,7 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
 
     public override void OnUpdate()
     {
-        if (InGame.instance != null) return;
+        if (InGame.instance == null) return;
         
         if (CycleUp.JustPressed())
         {
