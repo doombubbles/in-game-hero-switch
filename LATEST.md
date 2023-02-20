@@ -1,1 +1,1 @@
-- Fixed mistaken condition check preventing switching
+- Fixed issue of switched heroes not being placeable after restart

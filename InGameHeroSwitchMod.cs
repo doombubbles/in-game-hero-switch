@@ -58,6 +58,13 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
             newHero = heroes.First(hdm => hdm.towerIndex == index).towerId;
         }
 
+        ResetInventory(newHero);
+    }
+
+    private static void ResetInventory(string newHero)
+    {
+        var towerInventory = InGame.instance.GetTowerInventory();
+        var unlockedHeroes = Game.instance.GetPlayerProfile().unlockedHeroes;
         foreach (var unlockedHero in unlockedHeroes)
         {
             towerInventory.towerMaxes[unlockedHero] = 0;
@@ -84,6 +91,14 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
         else if (CycleDown.JustPressed())
         {
             ChangeHero(1);
+        }
+    }
+
+    public override void OnRestart()
+    {
+        if (realSelectedHero != null)
+        {
+            ResetInventory(realSelectedHero);
         }
     }
 }
