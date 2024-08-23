@@ -6,7 +6,7 @@
 In-Game Hero Switch
 </h1>
 
-### Lets you switch which hero you're using while already in a BTD6 match.
+### Lets you switch heroes while already in a BTD6 match.
 
 Ever forget to switch your hero before starting up a game?
 Now you don't have to exit and and come back.
