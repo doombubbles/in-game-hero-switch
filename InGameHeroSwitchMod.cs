@@ -34,7 +34,7 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
     {
         var hero = realSelectedHero ?? InGame.instance.SelectedHero;
 
-        var purchaseButton = ShopMenu.instance.GetTowerButtonFromBaseId(hero);
+        var purchaseButton = ShopMenu.instance.GetTowerButtonFromBaseId(hero).GetComponent<TowerPurchaseButton>();
         if (!CycleIfPlaced &&
             purchaseButton != null &&
             purchaseButton.GetLockedState() ==
@@ -74,9 +74,9 @@ public class InGameHeroSwitchMod : BloonsTD6Mod
 
         realSelectedHero = newHero;
         ShopMenu.instance.RebuildTowerSet();
-        foreach (var button in ShopMenu.instance.activeTowerButtons)
+        foreach (var button in ShopMenu.instance.ActiveTowerButtons)
         {
-            button.Update();
+            button.Cast<TowerPurchaseButton>().Update();
         }
     }
 
