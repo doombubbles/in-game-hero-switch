@@ -1,12 +1,5 @@
-﻿using System.Linq;
-using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.RightMenu;
-using Il2CppAssets.Scripts.Unity.UI_New.InGame.StoreMenu;
-using BTD_Mod_Helper;
+﻿using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api.ModOptions;
-using BTD_Mod_Helper.Extensions;
 using InGameHeroSwitch;
 using MelonLoader;
 using UnityEngine;
@@ -18,87 +11,15 @@ namespace InGameHeroSwitch;
 
 public class InGameHeroSwitchMod : BloonsTD6Mod
 {
-    private static readonly ModSettingBool CycleIfPlaced = new(false)
+    public static readonly ModSettingBool CycleIfPlaced = new(false)
     {
         description = "Whether to still allow cycling to different heroes if one is already placed down.",
         button = true
     };
 
-    private static readonly ModSettingHotkey CycleUp = new(KeyCode.PageUp);
+    public static readonly ModSettingHotkey CycleUp = new(KeyCode.PageUp);
 
-    private static readonly ModSettingHotkey CycleDown = new(KeyCode.PageDown);
+    public static readonly ModSettingHotkey CycleDown = new(KeyCode.PageDown);
 
-    private static string? realSelectedHero;
-
-    private static void ChangeHero(int delta)
-    {
-        var hero = realSelectedHero ?? InGame.instance.SelectedHero;
-
-        var purchaseButton = ShopMenu.instance.GetTowerButtonFromBaseId(hero).GetComponent<TowerPurchaseButton>();
-        if (!CycleIfPlaced &&
-            purchaseButton != null &&
-            purchaseButton.GetLockedState() ==
-            TowerPurchaseLockState.TowerInventoryLocked)
-        {
-            return;
-        }
-
-        var towerInventory = InGame.instance.GetTowerInventory();
-        var unlockedHeroes = Game.instance.GetPlayerProfile().unlockedHeroes;
-
-        var heroDetailsModels = InGame.instance.GetGameModel().heroSet.Select(tdm => tdm.Cast<HeroDetailsModel>());
-        var heroes = heroDetailsModels as HeroDetailsModel[] ?? heroDetailsModels.ToArray();
-
-        var index = heroes.First(hdm => hdm.towerId == hero).towerIndex;
-        var newHero = "";
-        while (!unlockedHeroes.Contains(newHero))
-        {
-            index += delta;
-            index = (index + heroes.Length) % heroes.Length;
-            newHero = heroes.First(hdm => hdm.towerIndex == index).towerId;
-        }
-
-        ResetInventory(newHero);
-    }
-
-    private static void ResetInventory(string newHero)
-    {
-        var towerInventory = InGame.instance.GetTowerInventory();
-        var unlockedHeroes = Game.instance.GetPlayerProfile().unlockedHeroes;
-        foreach (var unlockedHero in unlockedHeroes)
-        {
-            towerInventory.towerMaxes[unlockedHero] = 0;
-        }
-
-        towerInventory.towerMaxes[newHero] = 1;
-
-        realSelectedHero = newHero;
-        ShopMenu.instance.RebuildTowerSet();
-        foreach (var button in ShopMenu.instance.ActiveTowerButtons)
-        {
-            button.Cast<TowerPurchaseButton>().Update();
-        }
-    }
-
-    public override void OnUpdate()
-    {
-        if (InGame.instance == null) return;
-        
-        if (CycleUp.JustPressed())
-        {
-            ChangeHero(-1);
-        }
-        else if (CycleDown.JustPressed())
-        {
-            ChangeHero(1);
-        }
-    }
-
-    public override void OnRestart()
-    {
-        if (realSelectedHero != null)
-        {
-            ResetInventory(realSelectedHero);
-        }
-    }
+    public override void OnUpdate() => InGameHeroSwitchUtility.Update();
 }
