@@ -2,8 +2,8 @@
 
 public static class ModHelperData
 {
-    public const string WorksOnVersion = "52";
-    public const string Version = "1.1.6";
+    public const string WorksOnVersion = "56.0";
+    public const string Version = "1.1.7";
     public const string Name = "In-Game Hero Switch";
 
     public const string Description =
