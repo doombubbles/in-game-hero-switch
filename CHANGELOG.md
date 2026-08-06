@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.7] - 2026-08-06
+
 - Fixed for BTD6 v56
 - Fixed for BTD6 v52
 
@@ -38,7 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update for Mod Helper v3.0
 
-[unreleased]: https://github.com/doombubbles/in-game-hero-switch/compare/1.1.6...HEAD
+[unreleased]: https://github.com/doombubbles/InGameHeroSwitch/compare/1.1.7...HEAD
+[1.1.7]: https://github.com/doombubbles/InGameHeroSwitch/compare/1.1.6...1.1.7
 [1.1.6]: https://github.com/doombubbles/in-game-hero-switch/compare/1.1.5...1.1.6
 [1.1.5]: https://github.com/doombubbles/in-game-hero-switch/compare/1.1.4...1.1.5
 [1.1.4]: https://github.com/doombubbles/in-game-hero-switch/compare/1.1.3...1.1.4
